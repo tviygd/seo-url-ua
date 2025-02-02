@@ -1,0 +1,250 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex, nofollow">
+<link rel="icon" href=".../favicon.ico" type="image/x-icon">
+<style type="text/css">
+    html {
+        font-family: 'Helvetica Neue',Arial,Helvetica,sans-serif;
+    }
+#container {
+    width: 55%;
+    margin: 0 auto;
+}
+.ui.form {
+    position: relative;
+    max-width: 100%;
+}
+.ui.form > p {
+    margin: 1em 0em;
+}
+.ui.form .field {
+    clear: both;
+    margin: 0em 0em 1em;
+}
+.ui.form .field > label {
+    display: block;
+    color: rgba(0, 0, 0, 0.87);
+    font-size: 0.92857143em;
+    font-weight: bold;
+    text-transform: none;
+}
+.ui.form .field p span {
+    font-weight: bold;
+}
+.ui.form ::-webkit-datetime-edit,
+.ui.form ::-webkit-inner-spin-button {
+    height: 1.21428571em;
+}
+.ui.form input[type="text"] {
+    width: 100%;
+    vertical-align: top;
+    font-family: 'Helvetica Neue', Arial, Helvetica, sans-serif;
+    -webkit-appearance: none;
+    line-height: 1.21428571em;
+    padding-top: 0.678571em;
+    padding-bottom: 0.678571em;
+    text-indent: 1em;
+    font-size: 1em;
+    background: #FFFFFF;
+    border: 1px solid rgba(34, 36, 38, 0.15);
+    color: rgba(0, 0, 0, 0.87);
+    border-radius: 0.28571429rem;
+    -webkit-box-shadow: 0em 0em 0em 0em transparent inset;
+    box-shadow: 0em 0em 0em 0em transparent inset;
+    -webkit-transition: color 0.1s ease, border-color 0.1s ease;
+    transition: color 0.1s ease, border-color 0.1s ease;
+    margin: 0.2em 0 1em;
+}
+.ui.form ::-webkit-input-placeholder {
+    color: rgba(191, 191, 191, 0.87);
+}
+.ui.form :-ms-input-placeholder {
+    color: rgba(191, 191, 191, 0.87) !important;
+}
+.ui.form ::-moz-placeholder {
+    color: rgba(191, 191, 191, 0.87);
+}
+.ui.form :focus::-webkit-input-placeholder {
+    color: rgba(115, 115, 115, 0.87);
+}
+.ui.form :focus:-ms-input-placeholder {
+    color: rgba(115, 115, 115, 0.87) !important;
+}
+.ui.form :focus::-moz-placeholder {
+    color: rgba(115, 115, 115, 0.87);
+}
+.success.message {
+    display: block;
+    box-shadow: 0 0 0 1px #a3c293 inset,0 0 0 0 transparent;
+    background-color: #fcfff5;
+    color:#2c662d;
+    font-size: 1em;
+    position: relative;
+    min-height: 1em;
+    margin: 1em 0;
+    background: #f8f8f9;
+    padding: 1em 1.5em;
+    line-height: 1.4285em;
+    border-radius: .28571429rem;
+}
+.success.message .header {
+    color: #1a531b;
+    font-size: 1.14285714em;
+    font-weight: 700;
+    line-height: 20px;
+}
+#result{
+    margin: 1em 0em;
+    color: rgb(44, 102, 45);
+    margin-top: .25em;
+    font-size: 16px;
+    line-height: 20px;
+    margin-top: 3.5px;
+    opacity: 0.85;
+}
+.ui.button {
+    font-size: 1rem;
+    cursor: pointer;
+    display: inline-block;
+    min-height: 1em;
+    outline: 0;
+    border: none;
+    vertical-align: baseline;
+    background: #e0e1e2 none;
+    color: rgba(0,0,0,.6);
+    margin: 0 .25em 0 0;
+    padding: .78571429em 1.5em .78571429em;
+    text-transform: none;
+    text-shadow: none;
+    font-weight: 700;
+    line-height: 1em;
+    font-style: normal;
+    text-align: center;
+    text-decoration: none;
+    border-radius: .28571429rem;
+    -webkit-box-shadow: 0 0 0 1px transparent inset,0 0 0 0 rgba(34,36,38,.15) inset;
+    box-shadow: 0 0 0 1px transparent inset, 0 0 0 0 rgba(34,36,38,.15) inset;
+}
+.ui.button a, .ui.button a:visited {
+    text-decoration: none;
+    color: rgba(0,0,0,.6);
+}
+@media only screen and (max-width: 1024px) {
+    #container {
+        width: 80%;
+    }
+}
+@media only screen and (max-width: 780px) {
+    #container {
+        width: 90%;
+    }
+}
+</style>
+<title>URL генератор з української</title>
+<meta name="Description" content="Кабiнет мінiстрів України постaновою від 27 сiчня 2010 р. затвердив офiційну транслiтерацію українського алфавіту латиницею">
+<body>
+<div id="container">
+    <h2>URL генератор з української</h2>
+    <div class="ui form success">
+        <div class="field">
+    <label>Текст для транслітерації</label>
+    <input type="text" placeholder="Текст для seo url ..." id="url" value="" oninput="translit()">
+    <div class="ui button" id="button" onclick="reset(document.getElementById('url'))"><a href="">Очистити</a></div>
+  </div>
+  <div class="success message">
+    <div class="header">Транслітерований текст</div>
+    <p><div id="result"></div></p>
+  </div>
+  <p id="remark"></p>
+  </div>
+<br><hr><br>
+    <h2>Перевірка кількості символів в метатегі title</h2>
+    <div class="ui form success">
+        <div class="field">
+            <label>Заголовок title</label>
+            <input type="text" placeholder="Введіть заголовок title ..." id="title_data" value="" oninput="length()">
+            <p>Рекомендуєма кількість символів 70 - 80, залишилося <span id="amount_t">70</span> з 70. Всього літер: <span id="all_amount_t">0</span></p>
+            <div class="ui button" id="button1" onclick="document.getElementById('title_data').reset();"><a href="">Очистити</a></div>
+        </div>
+    </div>
+<br><hr><br>
+    <h2>Перевірка кількості символів в метатегі description</h2>
+    <div class="ui form success">
+        <div class="field">
+            <label>Заголовок description</label>
+            <input type="text" placeholder="Введіть заголовок description ..." id="description_data" value="" oninput="length()">
+            <p>Максимальна кількість символів - 160-290, рекомендуєма 160 - 180, залишилося <span id="amount_d">180</span> з 180. Всього літер: <span id="all_amount_d">0</span></p>
+            <div class="ui button" id="button2" onclick="reset(document.getElementById('description_data'))"><a href="">Очистити</a></div>
+        </div>
+    </div>
+</div>
+<script>
+    function translit() {
+    var data = document.getElementById("url").value;
+    data = data.toLowerCase();
+    data = data.replace(/[ьъыё]/g,"");
+    data = data.replace(/[`_.,;:~%#&<>'"@=$*+!?^${}()|[\]\\]/g, "");
+    if (data) { 
+        document.getElementById("remark").innerHTML = "Трансліт готовий для вставки з буферу обміну";
+         }
+    data = data.replace(/ /g,"-");
+    data = data.replace(/зг/gi,"zgh");
+    data = data.replace(/а/g,"a");
+    data = data.replace(/б/g,"b");
+    data = data.replace(/в/g,"v");
+    data = data.replace(/г/g,"h");
+    data = data.replace(/ґ/g,"g");
+    data = data.replace(/д/g,"d");
+    data = data.replace(/е/g,"e");
+    data = data.replace(/^є/, "ye");
+    data = data.replace(/є/g,"ie");
+    data = data.replace(/ж/g,"zh");
+    data = data.replace(/з/g,"z");
+    data = data.replace(/и/g,"y");
+    data = data.replace(/і/g,"i");
+    data = data.replace(/^ї/, "yi");
+    data = data.replace(/ї/g,"i");
+    data = data.replace(/^й/,"y");
+    data = data.replace(/й/g,"i");
+    data = data.replace(/к/g,"k");
+    data = data.replace(/л/g,"l");
+    data = data.replace(/м/g,"m");
+    data = data.replace(/н/g,"n");
+    data = data.replace(/о/g,"o");
+    data = data.replace(/п/g,"p");
+    data = data.replace(/р/g,"r");
+    data = data.replace(/с/g,"s");
+    data = data.replace(/т/g,"t");
+    data = data.replace(/у/g,"u");
+    data = data.replace(/ф/g,"f");
+    data = data.replace(/х/g,"kh");
+    data = data.replace(/ц/g,"ts");
+    data = data.replace(/ч/g,"ch");
+    data = data.replace(/ш/g,"sh");
+    data = data.replace(/щ/g,"shch");
+    data = data.replace(/^ю/,"yu");
+    data = data.replace(/ю/g,"iu");
+    data = data.replace(/^я/,"ya");
+    data = data.replace(/я/g,"ia");
+        document.getElementById("result").innerHTML = data;
+        navigator.clipboard.writeText(data);
+    }
+    function length () {
+        var title_length = document.getElementById("title_data").value.length;
+        var title_normal_length = 70;
+        var title_remainer = title_normal_length - title_length;
+        document.getElementById("amount_t").innerHTML = title_remainer;
+        document.getElementById("all_amount_t").innerHTML = title_length;
+
+        var description_length = document.getElementById("description_data").value.length;
+        var description_normal_length = 180;
+        var description_remainer = description_normal_length - description_length;
+        document.getElementById("amount_d").innerHTML = description_remainer;
+        document.getElementById("all_amount_d").innerHTML = description_length;
+    }
+</script>
+</body>
+</html>
